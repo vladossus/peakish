@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/Montserrat-Italic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Geologica';
+    src: url('../assets/fonts/Geologica.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+body { 
+    font-family: 'Geologica';
+    margin:0;
+    padding:0;
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat:no-repeat;
+    color:#0D0D0D;
+}
+
+/* Header / navbar styles */
+header {
+    position:sticky;
+    top:0;
+    display:flex;
+    align-items:center;
+    justify-content:center; /* center inner content */
+    padding:8px 0; /* vertical padding; horizontal spacing handled by .header-inner */
+    background: transparent; /* fully transparent navbar */
+    z-index:20;
+}
+
+.header-inner {
+    width:100%;
+    max-width:1200px; /* limits content width */
+    margin:0 auto;
+    padding:0 24px; /* leave space from both edges */
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo {
+    display:inline-block;
+}
+
+.logo-img {
+    height:48px;
+    width:auto;
+    display:block;
+    /* Make dark SVGs appear white; harmless for true-white SVGs */
+    filter: brightness(0) invert(1);
+}
+
+.brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.site-title {
+    color: #FFFFFF;
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-style: italic;
+    font-weight:700;
+    font-size:1.5rem;
+    line-height:1;
+    display:inline-block;
+}
+
+.main-nav {
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.main-nav a {
+    color: #FFFFFF;
+    margin-left:12px;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size:0.95rem;
+    transition: color 120ms ease, box-shadow 120ms ease;
+    line-height:1;
+    position: relative;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    transform: none;
+    outline: none;
+}
+
+.main-nav a.active {
+    color: #FFFFFF;
+    font-weight:700;
+}
+
+/* underline indicator */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    bottom: -6px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.6));
+    border-radius: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms cubic-bezier(.2,.9,.3,1);
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus::after,
+.main-nav a.active::after {
+    transform: scaleX(1);
+}
+
+/* Footer styles */
+.site-footer {
+    background: linear-gradient(180deg, rgba(45, 78, 83, 0.4), rgba(45, 78, 83, 1));
+    color: #FFFFFF;
+    padding:40px 0 20px 0;
+}
+
+.footer-inner {
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 24px;
+}
+
+.footer-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:24px;
+    align-items:start;
+    margin-bottom:20px;
+}
+
+.footer-logo { height:48px; filter: brightness(0) invert(1); }
+.footer-desc { margin-top:12px; color: #DADADA; max-width:320px; }
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 { color:#FFFFFF; margin:0 0 8px 0; font-size:1rem; }
+
+.footer-links ul,
+.footer-contact ul { list-style:none; margin:0; padding:0; color:#D1D1D1; }
+
+.footer-links li { margin-bottom:8px; }
+.footer-links a { color:#FFFFFF; text-decoration:none; }
+.footer-links a:hover { text-decoration:underline; }
+
+.footer-contact li { display:flex; align-items:center; gap:8px; margin-bottom:8px; color:#D1D1D1; }
+.icon { width:18px; height:18px; filter: brightness(0) invert(1); }
+
+.social-icons { display:flex; gap:12px; }
+.social-icon { width:28px; height:28px; filter: brightness(0) invert(1); }
+
+.footer-contact a { color:#FFFFFF; text-decoration:none; }
+.footer-contact a:hover { text-decoration:underline; }
+
+@media (max-width:900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width:600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction:column; gap:10px; align-items:flex-start; }
+}
