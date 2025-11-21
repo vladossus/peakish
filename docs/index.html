@@ -5,31 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peakish</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
 
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar (over hero) -->
   <header>
     <div class="header-inner">
       <div class="brand">
-        <a href="index.html" class="logo" aria-label="Mountaineering Explorer home">
-          <img src="assets/icons/logo.svg" alt="Mountaineering Explorer logo" class="logo-img">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/logo.svg" alt="logo" class="logo-img">
         </a>
         <span class="site-title">Peakish</span>
       </div>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html" class="active">Главная</a>
         <a href="mountains.html">Вершины</a>
-        <a href="gear.html" >Снаряжение</a>
-        <a href="my-climbs.html">Восхождения</a>
+        <a href="gear.html">Снаряжение</a>
+        <a href="climbs.html">Восхождения</a>
       </nav>
     </div>
   </header>
 
+  <!-- PRIMARY HERO -->
+  <section class="hero-primary">
+    <div class="hero-primary__content">
+      <h1>Исследуй горы по-настоящему</h1>
+      <p>Маршруты, снаряжение и дневник восхождений — всё в одном месте.</p>
 
+      <div class="hero-primary__actions">
+        <a href="mountains.html" class="btn btn-primary">Смотреть вершины</a>
+        <a href="climbs.html" class="btn btn-outline">Мои восхождения</a>
+      </div>
+    </div>
+  </section>
 
+  <!-- SECOND HERO (FEATURE PANELS) -->
+  <section class="hero-features">
+
+    <h2 class="features-title">Что ты найдешь в Peakish</h2>
+    <p class="features-subtitle">Все фичи для альпинистов и исследователей гор</p>
+
+    <div class="features-panels">
+      <!-- Panel 1 -->
+      <div class="feature-panel">
+        <div class="feature-avatar"></div>
+
+        <div class="feature-card">
+          <h3>Каталог вершин</h3>
+          <p>
+            Полный список гор с фильтрами по высоте, сложности и регионам.
+            Найди идеальный маршрут и подготовь своё следующее восхождение.
+          </p>
+          <a href="mountains.html" class="btn btn-outline">Посмотреть вершины</a>
+        </div>
+      </div>
+
+      <!-- Panel 2 -->
+      <div class="feature-panel">
+        <div class="feature-avatar"></div>
+
+        <div class="feature-card">
+          <h3>Снаряжение</h3>
+          <p>
+            Рекомендации по экипировке, чек-листы и подбор снаряжения
+            под разные условия и уровень подготовки.
+          </p>
+          <a href="gear.html" class="btn btn-outline">Изучить рекомендации</a>
+        </div>
+      </div>
+
+      <!-- Panel 3 -->
+      <div class="feature-panel">
+        <div class="feature-avatar"></div>
+
+        <div class="feature-card">
+          <h3>Журнал восхождений</h3>
+          <p>
+            Личный дневник всех маршрутов, достижений и прогресса.
+            Отслеживай свои вершины как профессионал.
+          </p>
+          <a href="climbs.html" class="btn btn-outline">Записать восхождение</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 
   <!-- footer -->
@@ -50,7 +113,7 @@
             <li><a href="index.html">Главная страница</a></li>
             <li><a href="peaks.html">Вершины</a></li>
             <li><a href="gear.html">Снаряжение</a></li>
-            <li><a href="my-climbs.html">Мои восхождения</a></li>
+            <li><a href="climbs.html">Мои восхождения</a></li>
           </ul>
         </div>
 
@@ -68,9 +131,9 @@
         <div class="footer-social">
           <h4>Соцсети</h4>
           <div class="social-icons">
-            <a href="https://t.me/pepukcoder" aria-label="Telegram"><img src="assets/icons/telegram.svg" alt="telegram" class="social-icon"></a>
-            <a href="https://instagram.com/nofc.pepukcoder" aria-label="Instagram"><img src="assets/icons/insta.svg" alt="instagram" class="social-icon"></a>
-            <a href="https://github.com/pepukcoder" aria-label="GitHub"><img src="assets/icons/github.svg" alt="github" class="social-icon"></a>
+            <a href="https://t.me/pepukcoder"><img src="assets/icons/telegram.svg" alt="telegram" class="social-icon"></a>
+            <a href="https://instagram.com/nofc.pepukcoder"><img src="assets/icons/insta.svg" alt="instagram" class="social-icon"></a>
+            <a href="https://github.com/pepukcoder"><img src="assets/icons/github.svg" alt="github" class="social-icon"></a>
           </div>
         </div>
 
@@ -79,4 +142,5 @@
   </footer>
 
 </body>
+
 </html>
