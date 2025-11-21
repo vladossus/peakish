@@ -143,7 +143,7 @@ header {
 .site-footer {
     background: rgb(7, 7, 7);
     color: #FFFFFF;
-    padding:40px 0 20px 0;
+    padding: 40px 0px;
 }
 
 .footer-inner {
@@ -158,7 +158,6 @@ header {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap:24px;
     align-items:start;
-    margin-bottom:20px;
 }
 
 .footer-logo { height:48px; filter: brightness(0) invert(1); }
