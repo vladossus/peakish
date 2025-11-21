@@ -24,7 +24,7 @@ header {
   min-height: 100vh;
 }
 
-/* Карточки */
+/* tips card */
 .card {
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(6px);
@@ -61,7 +61,7 @@ header {
   opacity: 0.9;
 }
 
-/* Модальное окно */
+/* modal */
 .modal {
   position: fixed;
   inset: 0;
