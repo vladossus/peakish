@@ -2,7 +2,9 @@ body {
   margin: 0;
   font-family: 'Geologica', sans-serif;
   color: #fff;
-  background-image: url('../assets/images/background4.webp');
+    background-image: 
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('../assets/images/background4.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +41,7 @@ header {
   overflow: hidden;
   border-radius: 20px;
   margin: 40px auto;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   background: rgba(7,7,7,0.5);
   backdrop-filter: blur(16px);
   height: 450px;
