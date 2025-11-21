@@ -29,35 +29,67 @@
   
   <div style="min-height: 100vh;">
     <!-- New Climb Button -->
-    <div class="new-climb-container">
-      <button id="newClimbBtn">+ Добавить восхождение</button>
+    <div class="add-btn-wrap">
+      <button class="btn-add-climb" id="newClimbBtn">
+        <img src="assets/icons/plus.svg" alt="" class="add-icon">
+        Добавить восхождение
+      </button>
     </div>
-  
     <!-- Climb Cards Grid -->
     <div class="climbs-grid" id="climbsGrid">
       <!-- Cards will be injected by JS -->
     </div>
   </div>
 
-  <!-- Climb Detail Modal -->
+  <!-- climb detail modal -->
   <div id="climbModal" class="modal">
     <div class="modal-content">
       <span class="modal-close">&times;</span>
-      <img id="modalPic" src="" alt="Climb Image" class="modal-image">
-      <h2 id="modalName"></h2>
-      <p><strong>Дата:</strong> <span id="modalDate"></span></p>
-      <p><strong>Высота:</strong> <span id="modalHeight"></span> м</p>
-      <p><strong>Локация:</strong> <span id="modalLocation"></span></p>
-      <p><strong>Сложность:</strong> <span id="modalDifficulty"></span></p>
-      <p><strong>Дистанция:</strong> <span id="modalDistance"></span> км</p>
-      <p><strong>Количество участников:</strong> <span id="modalPeople"></span></p>
-      <p><strong>Заметки:</strong> <span id="modalNotes"></span></p>
-      <div class="modal-buttons">
-        <button class="edit-btn">Редактировать</button>
-        <button class="delete-btn">Удалить</button>
+      <!-- image -->
+      <div class="modal-image-wrap">
+        <img id="modalPic" src="" alt="Climb Image" class="modal-image">
+      </div>
+      <!-- details -->
+      <div class="modal-details">
+        <h2 id="modalName" class="modal-title"></h2>
+        <div class="modal-info">
+          <p>
+            <img src="../docs/assets/icons/calendar.svg" class="modal-icon"/>
+            <strong>Дата:</strong> <span id="modalDate"></span>
+          </p>
+          <p>
+            <img src="../docs/assets/icons/mountain.svg" class="modal-icon"/>
+            <strong>Высота:</strong> <span id="modalHeight"></span> м
+          </p>
+          <p>
+            <img src="../docs/assets/icons/location.svg" class="modal-icon"/>
+            <strong>Локация:</strong> <span id="modalLocation"></span>
+          </p>
+          <p>
+            <img src="../docs/assets/icons/milestone.svg" class="modal-icon"/>
+            <strong>Сложность:</strong> <span id="modalDifficulty"></span>
+          </p>
+          <p>
+            <img src="../docs/assets/icons/footprints.svg" class="modal-icon"/>
+            <strong>Дистанция:</strong> <span id="modalDistance"></span> км
+          </p>
+          <p>
+            <img src="../docs/assets/icons/people.svg" class="modal-icon"/>
+            <strong>Количество участников:</strong> <span id="modalPeople"></span>
+          </p>
+          <p>
+            <img src="../docs/assets/icons/note.svg" class="modal-icon"/>
+            <strong>Заметки:</strong> <span id="modalNotes"></span>
+          </p>
+        </div>
+        <div class="modal-buttons">
+          <button class="edit-btn">Редактировать</button>
+          <button class="delete-btn">Удалить</button>
+        </div>
       </div>
     </div>
   </div>
+
 
   <!-- Add/Edit Climb Modal -->
   <div id="formModal" class="modal">
@@ -72,8 +104,8 @@
         </div>
 
         <div class="form-group">
-          <label>Изображение (URL)</label>
-          <input type="text" id="formPicture" required>
+          <label>Изображение</label>
+          <input type="file" id="formPicture" accept="image/*">
         </div>
 
         <div class="form-row">
@@ -95,10 +127,10 @@
           <div class="form-group">
             <label>Сложность</label>
             <select id="formDifficulty">
-              <option value="Easy">Easy</option>
-              <option value="Moderate">Moderate</option>
-              <option value="Hard">Hard</option>
-              <option value="Extreme">Extreme</option>
+              <option value="Легкая">Легкая</option>
+              <option value="Умеренная">Умеренная</option>
+              <option value="Сложная">Сложная</option>
+              <option value="Экстремальная">Экстремальная</option>
             </select>
           </div>
         </div>
@@ -126,7 +158,6 @@
       </form>
     </div>
   </div>
-
 
   <!-- footer -->
   <footer class="site-footer">

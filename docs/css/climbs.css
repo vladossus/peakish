@@ -1,4 +1,3 @@
-/* Center New Climb Button */
 body {
   background-image: url('../assets/images/background3.webp');
   background-size: cover;
@@ -9,147 +8,249 @@ body {
 }
 
 header {
-    position: relative;
+  position: relative;
 }
 
-.new-climb-container {
-  text-align: center;
-  margin: 40px 0;
+/* add climb */
+.add-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 30px;
 }
 
-#newClimbBtn {
-  background-color: #0077ff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
+.btn-add-climb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 22px;
   font-size: 16px;
-  transition: background 0.3s;
+  font-weight: 500;
+
+  color: #ffffff;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-#newClimbBtn:hover {
-  background-color: #005bbb;
+.btn-add-climb img.add-icon {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+  transition: transform 0.25s ease;
 }
 
-/* Climb Cards Grid */
+.btn-add-climb:hover {
+  background: #ffffff;
+  color: #0D0D0D;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.btn-add-climb:hover img.add-icon {
+  filter: invert(0);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* climbs */
 .climbs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
+  gap: 24px;
   padding: 0 40px 40px;
 }
 
-/* Climb Card */
 .climb-card {
-  background-color: #f9f9f9;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, rgb(245,245,245));
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(7,7,7,0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(7,7,7,0.05);
 }
 
 .climb-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(7,7,7,0.2);
 }
 
 .climb-card img {
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
+  border-bottom: 1px solid rgba(7,7,7,0.05);
+  transition: transform 0.3s ease;
 }
 
-.climb-card .card-content {
-  padding: 12px 16px;
+.climb-card:hover img {
+  transform: scale(1.05);
 }
 
-.climb-card .card-content h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
+.card-content {
+  padding: 16px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.climb-card .card-content p {
+.card-content h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(7,7,7);
+}
+
+.card-content p {
   margin: 4px 0;
   font-size: 14px;
-  color: #555;
+  color: rgb(50,50,50);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* Modal */
+.card-content p strong {
+  color: rgb(7,7,7);
+}
+
+.card-content .card-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* modal base */
 .modal {
   display: none;
   position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.6);
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.5);
 }
 
 .modal-content {
-  background-color: #fff;
+  background: #ffffff;
+  color: rgb(7,7,7);
   margin: 60px auto;
-  padding: 20px 30px;
+  padding: 0;
   border-radius: 12px;
-  max-width: 600px;
+  max-width: 500px;
   position: relative;
+  overflow: hidden;
 }
 
 .modal-close {
   position: absolute;
-  right: 20px;
-  top: 15px;
-  font-size: 28px;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(7,7,7);
+  background: transparent;
+  border: 2px solid rgb(7,7,7);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: rgb(7,7,7);
+  color: #ffffff;
+}
+
+/* details modal */
+.modal-image-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .modal-image {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  display: block;
+}
+
+.modal-details {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 600;
+  color: rgb(7,7,7);
+}
+
+.modal-info p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  font-size: 16px;
+  color: rgb(50,50,50);
+}
+
+.modal-info p strong {
+  color: rgb(7,7,7);
+}
+
+.modal-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .modal-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .modal-buttons button {
   padding: 8px 16px;
-  border: none;
+  font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
-}
-
-.edit-btn {
-  background-color: #ff9900;
-  color: #fff;
+  border: 2px solid rgb(7,7,7);
+  background: transparent;
+  color: rgb(7,7,7);
+  transition: all 0.2s ease;
 }
 
 .edit-btn:hover {
-  background-color: #cc7a00;
-}
-
-.delete-btn {
-  background-color: #ff4444;
-  color: #fff;
+  background: rgb(7,7,7);
+  color: #ffffff;
 }
 
 .delete-btn:hover {
-  background-color: #cc0000;
+  background: rgb(200,0,0);
+  border: 2px solid rgb(200,0,0);
+  color: #ffffff;
 }
 
-/* Form modal */
+
+/* Add/edit form modal */
 .form-modal {
   max-width: 650px;
+  background: #ffffff;
+  padding: 24px 28px;
+  border-radius: 12px;
 }
 
 .climb-form {
@@ -174,42 +275,51 @@ header {
 .form-group select,
 .form-group textarea {
   padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  border-radius: 6px;
+  border: 1px solid rgb(180,180,180);
+  background: #ffffff;
+  color: rgb(7,7,7);
   font-size: 14px;
+  transition: all 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: none;
-  border-color: #0077ff;
+  border-color: rgb(7,7,7);
+}
+
+#formNotes {
+  resize: vertical;
 }
 
 .form-actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
-.save-btn {
-  background: #0077ff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+.save-btn,
+.cancel-btn {
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  background: transparent;
+  border: 2px solid rgb(7,7,7);
+  color: rgb(7,7,7);
+  transition: all 0.2s ease;
 }
 
 .save-btn:hover {
-  background: #005bbb;
+  background: rgb(13, 98, 155);
+  border-color: rgb(13, 98, 155);
+  color: #ffffff;
 }
 
-.cancel-btn {
-  background: #eee;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
+.cancel-btn:hover {
+  background: rgb(7,7,7);
+  color: #ffffff;
 }
