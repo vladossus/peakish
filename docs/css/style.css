@@ -23,6 +23,7 @@
 a,
 button,
 .btn,
+.header-inner .brand .logo img,
 input[type="submit"] {
   cursor: pointer !important;
 }
