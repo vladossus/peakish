@@ -3,7 +3,6 @@ body {
   margin: 0;
   font-family: 'Geologica', sans-serif;
   color: #fff;
-  min-height: 100vh;
   background-image: url('../assets/images/background.webp');
   background-size: cover;
   background-position: center;
@@ -23,7 +22,7 @@ header {
   grid-auto-rows: 10px; /* высота строки для masonry */
   gap: 16px;
   padding: 40px;
-  min-height: 100vh;;
+  min-height: 100vh;
 }
 
 /* Карточки */

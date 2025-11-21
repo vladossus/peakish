@@ -26,6 +26,38 @@
       </nav>
     </div>
   </header>
+  
+  <div style="min-height: 100vh;">
+    <!-- New Climb Button -->
+    <div class="new-climb-container">
+      <button id="newClimbBtn">+ Добавить восхождение</button>
+    </div>
+  
+    <!-- Climb Cards Grid -->
+    <div class="climbs-grid" id="climbsGrid">
+      <!-- Cards will be injected by JS -->
+    </div>
+  </div>
+
+  <!-- Climb Detail Modal -->
+  <div id="climbModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <img id="modalPic" src="" alt="Climb Image" class="modal-image">
+      <h2 id="modalName"></h2>
+      <p><strong>Дата:</strong> <span id="modalDate"></span></p>
+      <p><strong>Высота:</strong> <span id="modalHeight"></span> м</p>
+      <p><strong>Локация:</strong> <span id="modalLocation"></span></p>
+      <p><strong>Сложность:</strong> <span id="modalDifficulty"></span></p>
+      <p><strong>Дистанция:</strong> <span id="modalDistance"></span> км</p>
+      <p><strong>Количество участников:</strong> <span id="modalPeople"></span></p>
+      <p><strong>Заметки:</strong> <span id="modalNotes"></span></p>
+      <div class="modal-buttons">
+        <button class="edit-btn">Редактировать</button>
+        <button class="delete-btn">Удалить</button>
+      </div>
+    </div>
+  </div>
 
   <!-- footer -->
   <footer class="site-footer">
@@ -70,5 +102,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="js/climbs.js"></script>
 </body>
 </html>
