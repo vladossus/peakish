@@ -1,4 +1,4 @@
-/* Primary Hero Section */
+/* primary hero */
 .hero-primary {
   height: 100vh;
   background-image: url('../assets/images/background2.webp');
@@ -42,6 +42,8 @@
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 30px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7), 
+               0 4px 12px rgba(0,0,0,0.5);
 }
 
 .hero-primary__actions {
@@ -110,7 +112,7 @@
 }
 
 
-/* Secondary Hero */
+/* secondary hero */
 .hero-features {
   min-height: 100vh;
   background-image: url('../assets/images/pattern.webp');
