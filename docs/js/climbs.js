@@ -1,19 +1,55 @@
-let climbs = JSON.parse(localStorage.getItem("climbs"))
+// Load climbs from localStorage or sample data
+let climbs = JSON.parse(localStorage.getItem("climbs")) || [
+  {
+    id: 1,
+    name: "Mount Everest",
+    picture: "assets/images/everest.jpg",
+    height: 8848,
+    date: "2025-05-21",
+    location: "Nepal/China",
+    difficulty: "Extreme",
+    distance: 20,
+    peopleCount: 3,
+    notes: "Reached summit after 8 hours."
+  }
+];
 
-// DOM elements
+// DOM
 const climbsGrid = document.getElementById("climbsGrid");
 const climbModal = document.getElementById("climbModal");
 const modalClose = climbModal.querySelector(".modal-close");
 const newClimbBtn = document.getElementById("newClimbBtn");
 
-let editingClimbId = null;
+const formModal = document.getElementById("formModal");
+const formModalClose = document.getElementById("formModalClose");
+const cancelFormBtn = document.getElementById("cancelFormBtn");
+const formTitle = document.getElementById("formTitle");
+const climbForm = document.getElementById("climbForm");
 
-// Render climb cards
+// Form fields
+const fName = document.getElementById("formName");
+const fPicture = document.getElementById("formPicture");
+const fHeight = document.getElementById("formHeight");
+const fDate = document.getElementById("formDate");
+const fLocation = document.getElementById("formLocation");
+const fDifficulty = document.getElementById("formDifficulty");
+const fDistance = document.getElementById("formDistance");
+const fPeople = document.getElementById("formPeople");
+const fNotes = document.getElementById("formNotes");
+
+let editingId = null;
+
+// Save to localStorage
+function saveClimbs() {
+  localStorage.setItem("climbs", JSON.stringify(climbs));
+}
+
+// Render cards
 function renderClimbs() {
   climbsGrid.innerHTML = "";
   climbs.forEach(climb => {
     const card = document.createElement("div");
-    card.classList.add("climb-card");
+    card.className = "climb-card";
     card.innerHTML = `
       <img src="${climb.picture}" alt="${climb.name}">
       <div class="card-content">
@@ -22,13 +58,13 @@ function renderClimbs() {
         <p><strong>Дата:</strong> ${climb.date}</p>
       </div>
     `;
-    card.addEventListener("click", () => openModal(climb));
+    card.onclick = () => openDetailModal(climb);
     climbsGrid.appendChild(card);
   });
 }
 
-// Open modal with climb details
-function openModal(climb) {
+// Detail modal
+function openDetailModal(climb) {
   document.getElementById("modalPic").src = climb.picture;
   document.getElementById("modalName").textContent = climb.name;
   document.getElementById("modalDate").textContent = climb.date;
@@ -39,68 +75,83 @@ function openModal(climb) {
   document.getElementById("modalPeople").textContent = climb.peopleCount;
   document.getElementById("modalNotes").textContent = climb.notes;
 
-  // Set edit/delete button actions
-  const editBtn = climbModal.querySelector(".edit-btn");
-  const deleteBtn = climbModal.querySelector(".delete-btn");
-
-  editingClimbId = climb.id;
-
-  editBtn.onclick = () => openAddEditModal(climb); // reuse modal for editing
-  deleteBtn.onclick = () => deleteClimb(climb.id);
+  climbModal.querySelector(".edit-btn").onclick = () => openFormModal(climb);
+  climbModal.querySelector(".delete-btn").onclick = () => deleteClimb(climb.id);
 
   climbModal.style.display = "block";
 }
 
-// Close modal
-modalClose.onclick = () => climbModal.style.display = "none";
-window.onclick = (e) => { if (e.target === climbModal) climbModal.style.display = "none"; };
-
-// Save climbs to localStorage
-function saveClimbs() {
-  localStorage.setItem("climbs", JSON.stringify(climbs));
-}
-
-// Delete a climb
-function deleteClimb(id) {
-  if (confirm("Вы уверены, что хотите удалить это восхождение?")) {
-    climbs = climbs.filter(c => c.id !== id);
-    saveClimbs();
-    renderClimbs();
-    climbModal.style.display = "none";
-  }
-}
-
-// Add/Edit climb modal (simple prompt version)
-function openAddEditModal(climb = null) {
-  let name = prompt("Название восхождения:", climb ? climb.name : "");
-  if (!name) return;
-  let picture = prompt("URL изображения:", climb ? climb.picture : "");
-  let height = prompt("Высота (м):", climb ? climb.height : "");
-  let date = prompt("Дата (YYYY-MM-DD):", climb ? climb.date : "");
-  let location = prompt("Локация:", climb ? climb.location : "");
-  let difficulty = prompt("Сложность:", climb ? climb.difficulty : "");
-  let distance = prompt("Дистанция (км):", climb ? climb.distance : "");
-  let peopleCount = prompt("Количество участников:", climb ? climb.peopleCount : "");
-  let notes = prompt("Заметки:", climb ? climb.notes : "");
-
-  const newClimb = {
-    id: climb ? climb.id : Date.now(),
-    name, picture, height, date, location, difficulty, distance, peopleCount, notes
-  };
+// Open form modal
+function openFormModal(climb = null) {
+  formModal.style.display = "block";
+  climbModal.style.display = "none";
 
   if (climb) {
-    climbs = climbs.map(c => c.id === climb.id ? newClimb : c);
+    formTitle.textContent = "Редактировать восхождение";
+    editingId = climb.id;
+    fName.value = climb.name;
+    fPicture.value = climb.picture;
+    fHeight.value = climb.height;
+    fDate.value = climb.date;
+    fLocation.value = climb.location;
+    fDifficulty.value = climb.difficulty;
+    fDistance.value = climb.distance;
+    fPeople.value = climb.peopleCount;
+    fNotes.value = climb.notes;
   } else {
-    climbs.push(newClimb);
+    formTitle.textContent = "Новое восхождение";
+    editingId = null;
+    climbForm.reset();
   }
+}
 
+// Delete
+function deleteClimb(id) {
+  if (!confirm("Удалить это восхождение?")) return;
+  climbs = climbs.filter(c => c.id !== id);
   saveClimbs();
   renderClimbs();
   climbModal.style.display = "none";
 }
 
-// New Climb button
-newClimbBtn.onclick = () => openAddEditModal();
+// Submit form
+climbForm.onsubmit = (e) => {
+  e.preventDefault();
 
-// Initial render
+  const climbData = {
+    id: editingId ? editingId : Date.now(),
+    name: fName.value,
+    picture: fPicture.value,
+    height: Number(fHeight.value),
+    date: fDate.value,
+    location: fLocation.value,
+    difficulty: fDifficulty.value,
+    distance: Number(fDistance.value),
+    peopleCount: Number(fPeople.value),
+    notes: fNotes.value
+  };
+
+  if (editingId) {
+    climbs = climbs.map(c => c.id === editingId ? climbData : c);
+  } else {
+    climbs.push(climbData);
+  }
+
+  saveClimbs();
+  renderClimbs();
+  formModal.style.display = "none";
+};
+
+// Button bindings
+newClimbBtn.onclick = () => openFormModal();
+modalClose.onclick = () => climbModal.style.display = "none";
+formModalClose.onclick = () => formModal.style.display = "none";
+cancelFormBtn.onclick = () => formModal.style.display = "none";
+
+window.onclick = (e) => {
+  if (e.target === climbModal) climbModal.style.display = "none";
+  if (e.target === formModal) formModal.style.display = "none";
+};
+
+// Init
 renderClimbs();

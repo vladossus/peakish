@@ -59,6 +59,75 @@
     </div>
   </div>
 
+  <!-- Add/Edit Climb Modal -->
+  <div id="formModal" class="modal">
+    <div class="modal-content form-modal">
+      <span class="modal-close" id="formModalClose">&times;</span>
+      <h2 id="formTitle">Новое восхождение</h2>
+
+      <form id="climbForm" class="climb-form">
+        <div class="form-group">
+          <label>Название</label>
+          <input type="text" id="formName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Изображение (URL)</label>
+          <input type="text" id="formPicture" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Высота (м)</label>
+            <input type="number" id="formHeight" required>
+          </div>
+          <div class="form-group">
+            <label>Дата</label>
+            <input type="date" id="formDate" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Локация</label>
+            <input type="text" id="formLocation">
+          </div>
+          <div class="form-group">
+            <label>Сложность</label>
+            <select id="formDifficulty">
+              <option value="Easy">Easy</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Hard">Hard</option>
+              <option value="Extreme">Extreme</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Дистанция (км)</label>
+            <input type="number" id="formDistance">
+          </div>
+          <div class="form-group">
+            <label>Количество участников</label>
+            <input type="number" id="formPeople">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Заметки</label>
+          <textarea id="formNotes" rows="4"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="save-btn">Сохранить</button>
+          <button type="button" class="cancel-btn" id="cancelFormBtn">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
   <!-- footer -->
   <footer class="site-footer">
     <div class="footer-inner">
