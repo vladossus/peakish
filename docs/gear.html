@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="css/gear.css">
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
 </head>
-<div id="pageLoader">
-  <img src="assets/icons/logo.svg" alt="Logo" class="loader-logo">
-  <div class="loader-bar-wrap">
-    <div class="loader-bar"></div>
+<body>
+  <div id="pageLoader">
+    <img src="assets/icons/logo.svg" alt="Logo" class="loader-logo">
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
   </div>
-</div>
-<div id="pageContent">
-  <body>
+  <div id="pageContent">
     <!-- navbar -->
     <header>
       <div class="header-inner">
@@ -36,15 +36,19 @@
     </header>
   
     <!-- gear tips gallery -->
-    <div class="gallery"></div>
+    <div class="gallery" data-masonry='{ "itemSelector": ".card", "columnWidth": ".grid-sizer", "gutter": ".gutter-sizer", "percentPosition": true }'>
+      <div class="grid-sizer"></div>
+      <div class="gutter-sizer"></div>
+    </div>
   
-    <!-- gear tip details -->
+    <!-- gear tip modal -->
     <div class="modal" id="articleModal">
       <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <h2 class="modal-title"></h2>
-        <p class="modal-topic"></p>
-        <p class="modal-date"></p>
+        <div class="modal-image">
+          <span class="modal-close">&times;</span>
+          <img>
+          <h3 class="modal-title"></h3>
+        </div>
         <div class="modal-body"></div>
       </div>
     </div>
@@ -92,9 +96,10 @@
         </div>
       </div>
     </footer>
+  </div>
     <script src="js/main.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/articles.js"></script>
     <script src="js/gallery.js"></script>
   </body>
-</div>
 </html>
